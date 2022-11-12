@@ -1,0 +1,87 @@
+---
+name: Build firmware
+on:
+  push:
+    branches:
+    - 'master'
+
+concurrency: 
+  group: 'fw-build'
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build firmware
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target:
+          - nv14;el18
+          - t12
+          - t16
+          - t18
+          - t8;zorro;commando8
+          - tlite;tpro;lr3pro
+          - tx12;tx12mk2
+          - tx16s
+          - x10;x10-access
+          - x12s
+          - x7;x7-access
+          - x9d;x9dp;x9dp2019
+          - x9e;x9e-hall
+          - x9lite;x9lites
+          - xlite;xlites
+    container:
+      image: ghcr.io/edgetx/edgetx-dev:latest
+      volumes:
+        - ${{ github.workspace }}:/src
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      - name: Build firmware ${{ matrix.target }}
+        env:
+          FLAVOR: ${{ matrix.target }}
+          EDGETX_VERSION_SUFFIX: custom
+        run: ./build-firmwares.sh
+
+      - name: Package firmware ${{ matrix.target }}
+        uses: 'actions/upload-artifact@v2'
+        with:
+          name: edgetx-firmware-custom
+          path: |
+            fw.json
+            LICENSE
+            *.bin
+          retention-days: 15
+          if-no-files-found: error
+
+  deploy:
+    name: Deploy release
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: edgetx-firmware-custom
+          path: edgetx-firmware-custom
+
+      - name: Compose release filename
+        run: echo "release_filename=edgetx-firmware-custom-${GITHUB_SHA::8}.zip" >> $GITHUB_ENV
+
+      - name: Zip release file
+        uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -j -r ${{ env.release_filename }} ./edgetx-firmware-custom
+
+      - name: Deploy release
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: 'custom'
+          prerelease: true
+          files: |
+            *.zip
