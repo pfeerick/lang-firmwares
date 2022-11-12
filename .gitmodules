@@ -1,0 +1,3 @@
+[submodule "edgetx"]
+	path = edgetx
+	url = https://github.com/edgetx/edgetx
