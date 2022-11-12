@@ -4,6 +4,11 @@ on:
   push:
     branches:
     - 'master'
+    tags:
+      - v*
+    paths-ignore:
+      - '**.md'
+  workflow_dispatch:
 
 concurrency: 
   group: 'fw-build'
