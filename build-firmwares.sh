@@ -24,7 +24,8 @@ TARGET_NAMES_BW=("t8" "tlite" "tpro" "tx12"
 # Voice menu only: SK HU
 #LANGUAGES_ALL=(CN CZ DA DE EN ES FI FR IT JA PT SE TW PL NL)
 LANGUAGES_COLORLCD=(CN CZ DA DE EN ES FI FR IT PT SE TW PL NL)
-LANGUAGES_BW=(CZ DA DE EN ES FI FR IT PT SE PL NL)
+# CZ overflowed on x9d family build
+LANGUAGES_BW=(DA DE EN ES FI FR IT PT SE PL NL)
 
 cd "${SRC_DIR}" || exit
 GIT_SHA_SHORT=$(git rev-parse --short HEAD )
