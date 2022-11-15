@@ -56,7 +56,8 @@ jobs:
         uses: 'actions/upload-artifact@v2'
         with:
           name: edgetx-firmware-custom
-          path: *.zip
+          path: |
+            *.zip
           retention-days: 15
           if-no-files-found: error
 
@@ -79,7 +80,8 @@ jobs:
           if: startsWith(github.event.ref, 'refs/tags/v')
           automatic_release_tag: 'release'
           prerelease: false
-          files: *.zip
+          files: |
+            *.zip
 
       - name: Deploy pre-release
         uses: marvinpinto/action-automatic-releases@latest
@@ -89,4 +91,5 @@ jobs:
           if: startsWith(github.event.ref, 'refs/tags/v')
           automatic_release_tag: 'latest'
           prerelease: true
-          files: *.zip
+          files: |
+            *.zip
