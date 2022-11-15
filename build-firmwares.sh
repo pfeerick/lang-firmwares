@@ -23,7 +23,6 @@ LANGUAGES_COLORLCD=(CN CZ DA DE EN ES FI FR IT PT SE TW PL NL)
 # CN, TW and JP don't display properly on B&W when last checked
 LANGUAGES_BW=(DA DE EN ES FI FR IT PT SE PL NL)
 
-cd "${SRC_DIR}" || exit
 GIT_SHA_SHORT=$(git rev-parse --short HEAD )
 target_names=$(echo "$FLAVOR" | tr '[:upper:]' '[:lower:]' | tr ';' '\n')
 
@@ -36,24 +35,21 @@ for target in $target_names; do
                 SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS=" -DTRANSLATIONS=${lang} " "${SRC_DIR}/tools/build-gh.sh"
             fi
             if [ -f "${SRC_DIR}/${fw_name}" ]; then
-                mv "${SRC_DIR}/${fw_name}" "${SRC_DIR}/${target}-${lang}-${GIT_SHA_SHORT}.bin"
+                mv "${SRC_DIR}/${fw_name}" "${target}-${lang}-${GIT_SHA_SHORT}.bin"
             fi
         done
-    else
+    else # Color LCD
         for lang in "${LANGUAGES_COLORLCD[@]}"; do
             if [[ ${debug} -ne 1 ]]; then
                 SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS=" -DTRANSLATIONS=${lang} " "${SRC_DIR}/tools/build-gh.sh"
             fi
             if [ -f "${SRC_DIR}/${fw_name}" ]; then
-                mv "${SRC_DIR}/${fw_name}" "${SRC_DIR}/${target}-${lang}-${GIT_SHA_SHORT}.bin"
+                mv "${SRC_DIR}/${fw_name}" "${target}-${lang}-${GIT_SHA_SHORT}.bin"
             fi
         done
     fi
 
     # Zip all the languages for this target, remove the rest
-    sha256sum "${SRC_DIR}/${target}"-[A-Z][A-Z]-*.bin >> "${SRC_DIR}/${target}".sha256 || continue
-    zip -7 -q -r "../${target}".zip "${SRC_DIR}/${target}"-[A-Z][A-Z]-*.bin "${SRC_DIR}/${target}".sha256 "${SRC_DIR}/fw.json" "${SRC_DIR}/LICENSE"
-    echo "$PWD"
-    ls -la
-    ls -la ..
+    sha256sum "${target}"-[A-Z][A-Z]-*.bin >> "${target}".sha256 || continue
+    zip -7 -q -r "${target}".zip "${target}"-[A-Z][A-Z]-*.bin "${target}".sha256 "${SRC_DIR}/fw.json" "${SRC_DIR}/LICENSE"
 done
