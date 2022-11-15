@@ -52,5 +52,5 @@ for target in $target_names; do
 
     # Zip all the languages for this target, remove the rest
     sha256sum "${SRC_DIR}/${target}"-[A-Z][A-Z]-*.bin >> "${SRC_DIR}/${target}".sha256 || continue
-    zip -7 -q -r "${SRC_DIR}/${target}".zip "${SRC_DIR}/${target}"-[A-Z][A-Z]-*.bin "${SRC_DIR}/${target}".sha256 "${SRC_DIR}/fw.json" "${SRC_DIR}/LICENSE"
+    zip -7 -q -r "./${target}".zip "${SRC_DIR}/${target}"-[A-Z][A-Z]-*.bin "${SRC_DIR}/${target}".sha256 "${SRC_DIR}/fw.json" "${SRC_DIR}/LICENSE"
 done
