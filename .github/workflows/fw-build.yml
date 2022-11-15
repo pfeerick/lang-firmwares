@@ -56,10 +56,7 @@ jobs:
         uses: 'actions/upload-artifact@v2'
         with:
           name: edgetx-firmware-custom
-          path: |
-            edgetx/fw.json
-            edgetx/LICENSE
-            edgetx/*.bin
+          path: *.zip
           retention-days: 15
           if-no-files-found: error
 
@@ -74,14 +71,6 @@ jobs:
           name: edgetx-firmware-custom
           path: edgetx-firmware-custom
 
-      - name: Compose release filename
-        run: echo "release_filename=edgetx-firmware-custom-${GITHUB_SHA::8}.zip" >> $GITHUB_ENV
-
-      - name: Zip release file
-        uses: montudor/action-zip@v1
-        with:
-          args: zip -qq -j -r ${{ env.release_filename }} ./edgetx-firmware-custom
-
       - name: Deploy release
         uses: marvinpinto/action-automatic-releases@latest
         if: startsWith(github.event.ref, 'refs/tags/v')
@@ -90,8 +79,7 @@ jobs:
           if: startsWith(github.event.ref, 'refs/tags/v')
           automatic_release_tag: 'release'
           prerelease: false
-          files: |
-            *.zip
+          files: *.zip
 
       - name: Deploy pre-release
         uses: marvinpinto/action-automatic-releases@latest
@@ -101,5 +89,4 @@ jobs:
           if: startsWith(github.event.ref, 'refs/tags/v')
           automatic_release_tag: 'latest'
           prerelease: true
-          files: |
-            *.zip
+          files: *.zip
