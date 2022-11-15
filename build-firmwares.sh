@@ -37,8 +37,8 @@ for target in $target_names; do
             if [[ ${debug} -ne 1 ]]; then
                 SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS=" -DTRANSLATIONS=${lang} " "${SRC_DIR}/tools/build-gh.sh"
             fi
-            if [ -f "${SRC_DIR}/${fw_name}" ]; then
-                mv "${SRC_DIR}/${fw_name}" "${target}-${lang}-${GIT_SHA_SHORT}.bin"
+            if [ -f "${fw_name}" ]; then
+                mv "${fw_name}" "${target}-${lang}-${GIT_SHA_SHORT}.bin"
             fi
         done
     else # Color LCD
@@ -46,8 +46,8 @@ for target in $target_names; do
             if [[ ${debug} -ne 1 ]]; then
                 SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS=" -DTRANSLATIONS=${lang} " "${SRC_DIR}/tools/build-gh.sh"
             fi
-            if [ -f "${SRC_DIR}/${fw_name}" ]; then
-                mv "${SRC_DIR}/${fw_name}" "${target}-${lang}-${GIT_SHA_SHORT}.bin"
+            if [ -f "${fw_name}" ]; then
+                mv "${fw_name}" "${target}-${lang}-${GIT_SHA_SHORT}.bin"
             fi
         done
     fi
