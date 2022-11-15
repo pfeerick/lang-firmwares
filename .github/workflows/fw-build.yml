@@ -81,7 +81,7 @@ jobs:
           automatic_release_tag: 'release'
           prerelease: false
           files: |
-            *.zip
+            edgetx-firmware-custom/*.zip
 
       - name: Deploy pre-release
         uses: marvinpinto/action-automatic-releases@latest
@@ -92,4 +92,4 @@ jobs:
           automatic_release_tag: 'latest'
           prerelease: true
           files: |
-            *.zip
+            edgetx-firmware-custom/*.zip
