@@ -57,9 +57,9 @@ jobs:
         with:
           name: edgetx-firmware-custom
           path: |
-            fw.json
-            LICENSE
-            *.bin
+            edgetx/fw.json
+            edgetx/LICENSE
+            edgetx/*.bin
           retention-days: 15
           if-no-files-found: error
 
