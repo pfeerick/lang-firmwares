@@ -7,19 +7,13 @@ set -x
 
 SRC_DIR="${SRC_DIR:=$(realpath "$(pwd)"/edgetx)}"
 
-# TARGET_NAMES_ALL=("nv14" "t16" "t18" "t8"
-# "tlite" "tx12" "tx16s" "x10" "x10-access"
-# "x12s" "x7" "x7-access" "x9d" "x9dp"
-# "x9dp2019" "x9e" "x9lite" "x9lites" "xlite"
-# "xlites" "tpro" "zorro")
-
-# TARGET_NAMES_COLORLCD=("nv14" "t16" "t18" "tx16s"
+# TARGET_NAMES_COLORLCD=("nv14" el18 "t16" "t18" "tx16s"
 # "x10" "x10-access" "x12s")
 
-TARGET_NAMES_BW=("t8" "tlite" "tpro" "tx12"
-"x7" "x7-access" "x9d" "x9dp"
-"x9dp2019" "x9e" "x9lite" "x9lites" "xlite"
-"xlites" "zorro")
+TARGET_NAMES_BW=("t8" "tlite" "tpro" "tx12" "tx12mk2"
+"x7" "x7-access" "x9d" "x9dp" "x9dp2019"
+"x9e" "x9e-hall" "x9lite" "x9lites" "xlite"
+"xlites" "zorro" "commando8" "lr3pro" "t12")
 
 # Voice menu only: SK HU
 #LANGUAGES_ALL=(CN CZ DA DE EN ES FI FR IT JA PT SE TW PL NL)
