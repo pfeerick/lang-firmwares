@@ -45,7 +45,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           submodules: recursive
-          set-safe-directory: $GITHUB_WORKSPACE
 
       - name: Build firmware ${{ matrix.target }}
         env:

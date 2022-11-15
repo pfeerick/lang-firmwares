@@ -23,6 +23,9 @@ LANGUAGES_COLORLCD=(CN CZ DA DE EN ES FI FR IT PT SE TW PL NL)
 # CN, TW and JP don't display properly on B&W when last checked
 LANGUAGES_BW=(DA DE EN ES FI FR IT PT SE PL NL)
 
+# workaround for GH repo owner
+git config --global --add safe.directory "$(pwd)"
+
 GIT_SHA_SHORT=$(git rev-parse --short HEAD )
 target_names=$(echo "$FLAVOR" | tr '[:upper:]' '[:lower:]' | tr ';' '\n')
 
