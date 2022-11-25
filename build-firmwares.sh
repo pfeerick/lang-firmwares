@@ -1,7 +1,6 @@
 #!/bin/bash
-debug=0
 
-# Stops on first error, echo on
+# Stop on first error, echo on
 set -e
 set -x
 
@@ -34,16 +33,12 @@ for target in $target_names; do
 
     if [[ ${TARGET_NAMES_BW[*]} =~ ${target} ]]; then
         for lang in "${LANGUAGES_BW[@]}"; do
-            if [[ ${debug} -ne 1 ]]; then
-                SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS=" -DTRANSLATIONS=${lang} " "${SRC_DIR}/tools/build-gh.sh"
-            fi
+            SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS=" -DTRANSLATIONS=${lang}" "${SRC_DIR}/tools/build-gh.sh"
             mv "${fw_name}" "${target}-${lang}-${GIT_SHA_SHORT}.bin"
         done
     else # Color LCD
         for lang in "${LANGUAGES_COLORLCD[@]}"; do
-            if [[ ${debug} -ne 1 ]]; then
-                SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS=" -DTRANSLATIONS=${lang} " "${SRC_DIR}/tools/build-gh.sh"
-            fi
+            SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS=" -DTRANSLATIONS=${lang}" "${SRC_DIR}/tools/build-gh.sh"
             mv "${fw_name}" "${target}-${lang}-${GIT_SHA_SHORT}.bin"
         done
     fi
