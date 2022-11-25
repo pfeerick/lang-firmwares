@@ -33,12 +33,12 @@ for target in $target_names; do
 
     if [[ ${TARGET_NAMES_BW[*]} =~ ${target} ]]; then
         for lang in "${LANGUAGES_BW[@]}"; do
-            SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS=" -DTRANSLATIONS=${lang}" "${SRC_DIR}/tools/build-gh.sh"
+            SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS="-DTRANSLATIONS=${lang} " "${SRC_DIR}/tools/build-gh.sh"
             mv "${fw_name}" "${target}-${lang}-${GIT_SHA_SHORT}.bin"
         done
     else # Color LCD
         for lang in "${LANGUAGES_COLORLCD[@]}"; do
-            SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS=" -DTRANSLATIONS=${lang}" "${SRC_DIR}/tools/build-gh.sh"
+            SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS="-DTRANSLATIONS=${lang} " "${SRC_DIR}/tools/build-gh.sh"
             mv "${fw_name}" "${target}-${lang}-${GIT_SHA_SHORT}.bin"
         done
     fi
