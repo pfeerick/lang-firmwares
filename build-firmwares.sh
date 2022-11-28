@@ -26,6 +26,18 @@ LANGUAGES_BW=(DA DE EN ES FI FR IT PT SE PL NL)
 git config --global --add safe.directory "$(pwd)"
 
 GIT_SHA_SHORT=$(git rev-parse --short HEAD )
+
+# Check if a tagged commit
+gh_type=$(echo "$GITHUB_REF" | awk -F / '{print $2}') #heads|tags|pull
+if [[ $gh_type = "tags" ]]; then
+    # tags: refs/tags/<tag_name>
+    gh_tag=${GITHUB_REF##*/}
+    export EDGETX_VERSION_TAG=lang-$gh_tag
+else
+    gh_tag="lang-${GIT_SHA_SHORT}"
+    export EDGETX_VERSION_TAG="lang-latest"
+fi
+
 target_names=$(echo "$FLAVOR" | tr '[:upper:]' '[:lower:]' | tr ';' '\n')
 
 for target in $target_names; do
@@ -45,5 +57,5 @@ for target in $target_names; do
 
     # Zip all the languages for this target, remove the rest
     sha256sum "${target}"-[A-Z][A-Z]-*.bin >> "${target}".sha256 || continue
-    zip -7 -q -j "${target}".zip "${target}"-[A-Z][A-Z]-*.bin "${target}".sha256 "${SRC_DIR}/fw.json" "${SRC_DIR}/LICENSE"
+    zip -7 -q -j "${target}-${gh_tag}".zip "${target}"-[A-Z][A-Z]-*.bin "${target}".sha256 "${SRC_DIR}/fw.json" "${SRC_DIR}/LICENSE"
 done
