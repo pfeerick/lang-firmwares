@@ -49,8 +49,14 @@ jobs:
       - name: Build firmware ${{ matrix.target }}
         env:
           FLAVOR: ${{ matrix.target }}
-          EDGETX_VERSION_SUFFIX: custom
+          EDGETX_VERSION_SUFFIX: lang-custom
         run: ./build-firmwares.sh
+
+      - name: Build firmware with HELI ${{ matrix.target }}
+        env:
+          FLAVOR: ${{ matrix.target }}
+          EDGETX_VERSION_SUFFIX: lang-custom
+        run: ./build-firmwares-heli.sh
 
       - name: Package firmware ${{ matrix.target }}
         uses: 'actions/upload-artifact@v2'

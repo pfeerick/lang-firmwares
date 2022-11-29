@@ -27,7 +27,6 @@ git config --global --add safe.directory "$(pwd)"
 
 GIT_SHA_SHORT=$(git rev-parse --short HEAD )
 
-# Check if a tagged commit
 gh_type=$(echo "$GITHUB_REF" | awk -F / '{print $2}') #heads|tags|pull
 if [[ $gh_type = "tags" ]]; then
     # tags: refs/tags/<tag_name>
@@ -43,17 +42,17 @@ for target in $target_names; do
 
     if [[ ${TARGET_NAMES_BW[*]} =~ ${target} ]]; then
         for lang in "${LANGUAGES_BW[@]}"; do
-            SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS="-DTRANSLATIONS=${lang} " "${SRC_DIR}/tools/build-gh.sh"
-            mv "${fw_name}" "${target}-${lang}-${GIT_SHA_SHORT}.bin"
+            SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS="-DTRANSLATIONS=${lang} -DHELI=Y " "${SRC_DIR}/tools/build-gh.sh"
+            mv "${fw_name}" "${target}-${lang}-heli-${GIT_SHA_SHORT}.bin"
         done
     else # Color LCD
         for lang in "${LANGUAGES_COLORLCD[@]}"; do
-            SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS="-DTRANSLATIONS=${lang} " "${SRC_DIR}/tools/build-gh.sh"
-            mv "${fw_name}" "${target}-${lang}-${GIT_SHA_SHORT}.bin"
+            SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS="-DTRANSLATIONS=${lang} -DHELI=Y " "${SRC_DIR}/tools/build-gh.sh"
+            mv "${fw_name}" "${target}-${lang}-heli-${GIT_SHA_SHORT}.bin"
         done
     fi
 
     # Zip all the languages for this target, remove the rest
     sha256sum "${target}"-[A-Z][A-Z]-*.bin >> "${target}".sha256 || continue
-    zip -7 -q -j "${target}-${gh_tag}".zip "${target}"-[A-Z][A-Z]-"${GIT_SHA_SHORT}".bin "${target}".sha256 "${SRC_DIR}/fw.json" "${SRC_DIR}/LICENSE"
+    zip -7 -q -j "${target}-heli-${gh_tag}".zip "${target}"-[A-Z][A-Z]-heli-"${GIT_SHA_SHORT}".bin "${target}".sha256 "${SRC_DIR}/fw.json" "${SRC_DIR}/LICENSE"
 done
