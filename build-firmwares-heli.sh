@@ -18,7 +18,7 @@ TARGET_HELI_SKIP=("x9d" "x9dp" "x9dp2019")
 
 # Voice menu only: SK HU
 #LANGUAGES_ALL=(CN CZ DA DE EN ES FI FR IT JA PT SE TW PL NL)
-LANGUAGES_COLORLCD=(CN CZ DA DE EN ES FI FR IT PT SE TW PL NL)
+LANGUAGES_COLORLCD=(CN CZ DA DE EN ES FI FR IT JA PT SE TW PL NL)
 
 # CZ overflowed on x9d family build
 # CN, TW and JP don't display properly on B&W when last checked
