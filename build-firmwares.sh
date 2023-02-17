@@ -18,9 +18,8 @@ TARGET_NAMES_BW=("t8" "tlite" "tpro" "tx12" "tx12mk2"
 #LANGUAGES_ALL=(CN CZ DA DE EN ES FI FR IT JP PT SE TW PL NL)
 LANGUAGES_COLORLCD=(CN CZ DA DE EN ES FI FR IT JP PT SE TW PL NL)
 
-# CZ overflowed on x9d family build
 # CN, TW and JP don't display properly on B&W when last checked
-LANGUAGES_BW=(DA DE EN ES FI FR IT PT SE PL NL)
+LANGUAGES_BW=(CZ DA DE EN ES FI FR IT PT SE PL NL)
 
 # workaround for GH repo owner
 git config --global --add safe.directory "$(pwd)"
