@@ -95,7 +95,6 @@ jobs:
         if: startsWith(github.event.ref, 'refs/tags/v')
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          if: startsWith(github.event.ref, 'refs/tags/v')
           automatic_release_tag: 'release'
           prerelease: false
           files: |
@@ -106,7 +105,6 @@ jobs:
         if:  ${{ !startsWith(github.event.ref, 'refs/tags/v') }}
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          if: startsWith(github.event.ref, 'refs/tags/v')
           automatic_release_tag: 'latest'
           prerelease: true
           files: |
