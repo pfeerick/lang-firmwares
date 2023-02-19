@@ -52,16 +52,16 @@ for target in $target_names; do
     if [[ ${TARGET_NAMES_BW[*]} =~ ${target} ]]; then
         for lang in "${LANGUAGES_BW[@]}"; do
             SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS="-DTRANSLATIONS=${lang} -DBLUETOOTH=Y " "${SRC_DIR}/tools/build-gh.sh"
-            mv "${fw_name}" "${target}-${lang}-bluetooth-${GIT_SHA_SHORT}.bin"
+            mv "${fw_name}" "${target}-${lang}-bluetooth-heli-${GIT_SHA_SHORT}.bin"
         done
     else # Color LCD
         for lang in "${LANGUAGES_COLORLCD[@]}"; do
             SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS="-DTRANSLATIONS=${lang} -DBLUETOOTH=Y " "${SRC_DIR}/tools/build-gh.sh"
-            mv "${fw_name}" "${target}-${lang}-bluetooth-${GIT_SHA_SHORT}.bin"
+            mv "${fw_name}" "${target}-${lang}-bluetooth-heli-${GIT_SHA_SHORT}.bin"
         done
     fi
 
     # Zip all the languages for this target, remove the rest
     sha256sum "${target}"-[A-Z][A-Z]-*.bin >> "${target}".sha256 || continue
-    zip -7 -q -j "${target}-bluetooth-${gh_tag}".zip "${target}"-[A-Z][A-Z]-bluetooth-"${GIT_SHA_SHORT}".bin "${target}".sha256 "${SRC_DIR}/fw.json" "${SRC_DIR}/LICENSE"
+    zip -7 -q -j "${target}-bluetooth-heli-${gh_tag}".zip "${target}"-[A-Z][A-Z]-bluetooth-"${GIT_SHA_SHORT}".bin "${target}".sha256 "${SRC_DIR}/fw.json" "${SRC_DIR}/LICENSE"
 done

@@ -70,6 +70,12 @@ jobs:
           EDGETX_VERSION_SUFFIX: lang-custom
         run: ./build-firmwares-bluetooth.sh
 
+      - name: Build firmware with BLUETOOTH & HELI ${{ matrix.target }}
+        env:
+          FLAVOR: ${{ matrix.target }}
+          EDGETX_VERSION_SUFFIX: lang-custom
+        run: ./build-firmwares-bluetooth-heli.sh
+
       - name: Package firmware ${{ matrix.target }}
         uses: actions/upload-artifact@v3
         with:
