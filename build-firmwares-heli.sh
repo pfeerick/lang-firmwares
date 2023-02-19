@@ -14,7 +14,7 @@ TARGET_NAMES_BW=("t8" "tlite" "tpro" "tx12" "tx12mk2"
 "x9e" "x9e-hall" "x9lite" "x9lites" "xlite"
 "xlites" "zorro" "commando8" "lr3pro" "t12")
 
-TARGET_HELI_SKIP=("x9d" "x9dp" "x9dp2019")
+TARGET_OVERFLOW_SKIP=("x9d" "x9dp" "x9dp2019")
 
 # Voice menu only: SK HU
 #LANGUAGES_ALL=(CN CZ DA DE EN ES FI FR IT JP PT SE TW PL NL)
@@ -40,7 +40,7 @@ fi
 target_names=$(echo "$FLAVOR" | tr '[:upper:]' '[:lower:]' | tr ';' '\n')
 
 for target in $target_names; do
-    if [[ ${TARGET_HELI_SKIP[*]} =~ ${target} ]]; then
+    if [[ ${TARGET_OVERFLOW_SKIP[*]} =~ ${target} ]]; then
         break
     fi
 
