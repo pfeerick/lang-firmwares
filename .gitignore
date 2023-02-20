@@ -1,0 +1,13 @@
+/.*project
+/.settings
+/.autotools
+/*.user
+/*.user.*
+/doc/
+build*/
+cmake-build-*/
+/debian/
+/*.vscode
+radio/src/tests/googletest*
+radio/src/tests/gtest*.tar.gz
+.editorconfig
