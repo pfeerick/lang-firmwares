@@ -14,8 +14,8 @@ TARGET_NAMES_BW=("t8" "tlite" "tpro" "tx12" "tx12mk2"
 "x9e" "x9e-hall" "x9lite" "x9lites" "xlite"
 "xlites" "zorro" "commando8" "lr3pro" "t12")
 
-TARGET_BLUETOOTH_ENABLED=("x7" "x7-access" "xlite" "x9lites" "x9dp2019" "nv14"
-"el18" "t16" "t18" "tx16s" "x10" "x10-access" "x12s" "boxer" "tx12" "tx12mk2" "zorro")
+TARGET_BLUETOOTH_ENABLED=("x7" "x7-access" "xlite" "x9lites" "x9dp2019" 
+"t16" "t18" "tx16s" "x10" "x10-access" "x12s" "boxer" "tx12" "tx12mk2" "zorro")
 
 # Voice menu only: SK HU
 #LANGUAGES_ALL=(CN CZ DA DE EN ES FI FR IT JP PT SE TW PL NL)
