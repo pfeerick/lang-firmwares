@@ -40,8 +40,9 @@ target_names=$(echo "$FLAVOR" | tr '[:upper:]' '[:lower:]' | tr ';' '\n')
 
 for target in $target_names; do
     fw_name="${target}-${GIT_SHA_SHORT}.bin"
+    re=\\b${target}\\b
 
-    if [[ ${TARGET_NAMES_BW[*]} =~ ${target} ]]; then
+    if [[ ${TARGET_NAMES_BW[*]} =~ $re ]]; then
         for lang in "${LANGUAGES_BW[@]}"; do
             SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS="-DTRANSLATIONS=${lang} " "${SRC_DIR}/tools/build-gh.sh"
             mv "${fw_name}" "${target}-${lang}-${GIT_SHA_SHORT}.bin"
