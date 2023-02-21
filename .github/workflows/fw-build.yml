@@ -8,6 +8,7 @@ on:
       - v*
     paths:
       - 'build-firmwares.sh'
+      - '.github/workflows/fw-build.yml'
   workflow_dispatch:
 
 concurrency: 

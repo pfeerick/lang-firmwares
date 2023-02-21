@@ -8,6 +8,7 @@ on:
       - v*
     paths:
       - 'build-firmwares-luamixer.sh'
+      - '.github/workflows/fw-build-luamixer.yml'
   workflow_dispatch:
 
 concurrency: 

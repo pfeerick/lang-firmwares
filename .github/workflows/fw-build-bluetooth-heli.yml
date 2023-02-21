@@ -8,6 +8,7 @@ on:
       - v*
     paths:
       - 'build-firmwares-bluetooth-heli.sh'
+      - '.github/workflows/fw-build-bluetooth-heli.yml'
   workflow_dispatch:
 
 concurrency: 
