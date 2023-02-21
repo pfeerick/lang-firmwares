@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 concurrency: 
-  group: 'fw-build'
+  group: 'fw-build-luamixer'
   cancel-in-progress: true
 
 jobs:
