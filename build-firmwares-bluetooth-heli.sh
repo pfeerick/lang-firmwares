@@ -42,11 +42,6 @@ target_names=$(echo "$FLAVOR" | tr '[:upper:]' '[:lower:]' | tr ';' '\n')
 
 for target in $target_names; do
     re=\\b${target}\\b
-    if [[ ! ${TARGET_BLUETOOTH_ENABLED[*]} =~ $re ]]; then
-        echo "Not BT"
-        break
-    fi
-
     fw_name="${target}-${GIT_SHA_SHORT}.bin"
 
     if [[ ${TARGET_NAMES_BW[*]} =~ $re ]]; then

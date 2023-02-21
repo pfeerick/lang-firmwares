@@ -14,8 +14,6 @@ TARGET_NAMES_BW=("t8" "tlite" "tpro" "tx12" "tx12mk2"
 "x9e" "x9e-hall" "x9lite" "x9lites" "xlite"
 "xlites" "zorro" "commando8" "lr3pro" "t12")
 
-TARGET_OVERFLOW_SKIP=("x9d" "x9dp" "x9dp2019")
-
 # Voice menu only: SK HU
 #LANGUAGES_ALL=(CN CZ DA DE EN ES FI FR IT JP PT SE TW PL NL)
 LANGUAGES_COLORLCD=(CN CZ DA DE EN ES FI FR IT JP PT SE TW PL NL)
@@ -41,11 +39,6 @@ target_names=$(echo "$FLAVOR" | tr '[:upper:]' '[:lower:]' | tr ';' '\n')
 
 for target in $target_names; do
     re=\\b${target}\\b
-    if [[ ${TARGET_OVERFLOW_SKIP[*]} =~ $re ]]; then
-        echo "Firmware overflow"
-        break
-    fi
-
     fw_name="${target}-${GIT_SHA_SHORT}.bin"
 
     if [[ ${TARGET_NAMES_BW[*]} =~ $re ]]; then
