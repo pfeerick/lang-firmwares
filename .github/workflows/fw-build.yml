@@ -52,30 +52,6 @@ jobs:
           EDGETX_VERSION_SUFFIX: lang-custom
         run: ./build-firmwares.sh
 
-      - name: Build firmware with HELI ${{ matrix.target }}
-        env:
-          FLAVOR: ${{ matrix.target }}
-          EDGETX_VERSION_SUFFIX: lang-custom
-        run: ./build-firmwares-heli.sh
-
-      - name: Build firmware with LUAMIXER ${{ matrix.target }}
-        env:
-          FLAVOR: ${{ matrix.target }}
-          EDGETX_VERSION_SUFFIX: lang-custom
-        run: ./build-firmwares-luamixer.sh
-
-      - name: Build firmware with BLUETOOTH ${{ matrix.target }}
-        env:
-          FLAVOR: ${{ matrix.target }}
-          EDGETX_VERSION_SUFFIX: lang-custom
-        run: ./build-firmwares-bluetooth.sh
-
-      - name: Build firmware with BLUETOOTH & HELI ${{ matrix.target }}
-        env:
-          FLAVOR: ${{ matrix.target }}
-          EDGETX_VERSION_SUFFIX: lang-custom
-        run: ./build-firmwares-bluetooth-heli.sh
-
       - name: Package firmware ${{ matrix.target }}
         uses: actions/upload-artifact@v3
         with:
