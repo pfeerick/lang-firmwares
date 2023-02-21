@@ -30,7 +30,6 @@ jobs:
           - x10;x10-access
           - x12s
           - x7;x7-access
-          - x9dp2019
           - x9lites
           - xlite
     container:
