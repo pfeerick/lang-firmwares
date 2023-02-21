@@ -3,16 +3,16 @@ name: Build firmware - BLUETOOTH, HELI
 on:
   push:
     branches:
-    - 'master'
+      - "master"
     tags:
       - v*
     paths:
-      - 'build-firmwares-bluetooth-heli.sh'
-      - '.github/workflows/fw-build-bluetooth-heli.yml'
+      - "build-firmwares-bluetooth-heli.sh"
+      - ".github/workflows/fw-build-bluetooth-heli.yml"
   workflow_dispatch:
 
-concurrency: 
-  group: 'fw-build-bluetooth-heli'
+concurrency:
+  group: "fw-build-bluetooth-heli"
   cancel-in-progress: true
 
 jobs:
@@ -80,10 +80,10 @@ jobs:
 
       - name: Deploy pre-release
         uses: softprops/action-gh-release@v1
-        if:  ${{ !startsWith(github.event.ref, 'refs/tags/v') }}
+        if: ${{ !startsWith(github.event.ref, 'refs/tags/v') }}
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
-          tag_name: 'latest'
+          tag_name: "latest"
           prerelease: true
           generate_release_notes: true
           files: |
