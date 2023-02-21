@@ -1,5 +1,5 @@
 ---
-name: Build firmware
+name: Build firmware - HELI
 on:
   push:
     branches:
@@ -8,9 +8,6 @@ on:
       - v*
     paths:
       - 'build-firmwares-heli.sh'
-    paths-ignore:
-      - '**.md'
-      
   workflow_dispatch:
 
 concurrency: 

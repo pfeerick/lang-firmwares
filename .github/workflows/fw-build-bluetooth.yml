@@ -1,15 +1,11 @@
 ---
-name: Build firmware
-on:
-  push:
+name: Build firmware - BLUETOOTH
     branches:
     - 'master'
     tags:
       - v*
     paths:
       - 'build-firmwares-bluetooth.sh'
-    paths-ignore:
-      - '**.md'
   workflow_dispatch:
 
 concurrency: 

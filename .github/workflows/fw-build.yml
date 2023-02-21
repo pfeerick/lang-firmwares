@@ -6,8 +6,8 @@ on:
     - 'master'
     tags:
       - v*
-    paths-ignore:
-      - '**.md'
+    paths:
+      - 'build-firmwares.sh'
   workflow_dispatch:
 
 concurrency: 
