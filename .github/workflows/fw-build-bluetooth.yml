@@ -1,5 +1,7 @@
 ---
 name: Build firmware - BLUETOOTH
+on:
+  push:
     branches:
     - 'master'
     tags:
