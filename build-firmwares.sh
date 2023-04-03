@@ -44,6 +44,7 @@ for target in $target_names; do
     if [[ ${TARGET_NAMES_BW[*]} =~ $re ]]; then
         for lang in "${LANGUAGES_BW[@]}"; do
             if [[ "${target}" =~ ^x9d.* && "${lang}" == "CZ" ]]; then continue; fi # x9d family CZ overflow
+            if [[ "${target}" == "x9dp2019" && "${lang}" == "PL" ]]; then continue; fi # x9d+2019 PL overflow
             if [[ "${target}" == "x9dp2019" && "${lang}" == "DE" ]]; then continue; fi # x9d+2019 DE overflow
             SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS="-DTRANSLATIONS=${lang} " "${SRC_DIR}/tools/build-gh.sh"
             mv "${fw_name}" "${target}-${lang}-${GIT_SHA_SHORT}.bin"
