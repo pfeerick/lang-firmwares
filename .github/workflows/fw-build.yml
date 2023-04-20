@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         target:
-          - x9d;x9dp;x9dp2019
+          - x9dp2019;x9d;x9dp
           - nv14;el18
           - t12
           - t16
