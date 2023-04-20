@@ -49,7 +49,7 @@ for target in $target_names; do
             if [[ "${target}" == "x9dp2019" && "${lang}" == "ES" ]]; then continue; fi # x9d+2019 ES overflow
             if [[ "${target}" == "x9dp2019" && "${lang}" == "FI" ]]; then continue; fi # x9d+2019 FI overflow
             if [[ "${target}" == "x9dp2019" && "${lang}" == "FR" ]]; then continue; fi # x9d+2019 FR overflow
-            #if [[ "${target}" == "x9dp2019" && "${lang}" == "IT" ]]; then continue; fi # x9d+2019 IT overflow
+            if [[ "${target}" == "x9dp2019" && "${lang}" == "IT" ]]; then continue; fi # x9d+2019 IT overflow
             #if [[ "${target}" == "x9dp2019" && "${lang}" == "NL" ]]; then continue; fi # x9d+2019 NL overflow
             #if [[ "${target}" == "x9dp2019" && "${lang}" == "PT" ]]; then continue; fi # x9d+2019 PT overflow
             if [[ "${target}" == "x9dp2019" && "${lang}" == "PL" ]]; then continue; fi # x9d+2019 PL overflow
