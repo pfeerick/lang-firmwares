@@ -43,7 +43,7 @@ for target in $target_names; do
 
     if [[ ${TARGET_NAMES_BW[*]} =~ $re ]]; then
         for lang in "${LANGUAGES_BW[@]}"; do
-            # if [[ "${target}" =~ ^x9d.* && "${lang}" == "CZ" ]]; then continue; fi # x9d family CZ overflow
+            if [[ "${target}" =~ ^x9d.* && "${lang}" == "CZ" ]]; then continue; fi # x9d family CZ overflow
             # if [[ "${target}" == "x9dp2019" && "${lang}" == "DA" ]]; then continue; fi # x9d+2019 DA overflow
             # if [[ "${target}" == "x9dp2019" && "${lang}" == "DE" ]]; then continue; fi # x9d+2019 DE overflow
             # if [[ "${target}" == "x9dp2019" && "${lang}" == "ES" ]]; then continue; fi # x9d+2019 ES overflow
