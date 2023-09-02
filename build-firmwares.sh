@@ -43,17 +43,17 @@ for target in $target_names; do
 
     if [[ ${TARGET_NAMES_BW[*]} =~ $re ]]; then
         for lang in "${LANGUAGES_BW[@]}"; do
-            if [[ "${target}" =~ "x9dp2019" && "${lang}" == "CZ" ]]; then continue; fi # x9d+2019 CZ overflow
-            if [[ "${target}" == "x9dp2019" && "${lang}" == "DA" ]]; then continue; fi # x9d+2019 DA overflow
-            if [[ "${target}" == "x9dp2019" && "${lang}" == "DE" ]]; then continue; fi # x9d+2019 DE overflow
-            if [[ "${target}" == "x9dp2019" && "${lang}" == "ES" ]]; then continue; fi # x9d+2019 ES overflow
+            # if [[ "${target}" =~ "x9dp2019" && "${lang}" == "CZ" ]]; then continue; fi # x9d+2019 CZ overflow
+            # if [[ "${target}" == "x9dp2019" && "${lang}" == "DA" ]]; then continue; fi # x9d+2019 DA overflow
+            # if [[ "${target}" == "x9dp2019" && "${lang}" == "DE" ]]; then continue; fi # x9d+2019 DE overflow
+            # if [[ "${target}" == "x9dp2019" && "${lang}" == "ES" ]]; then continue; fi # x9d+2019 ES overflow
             # if [[ "${target}" == "x9dp2019" && "${lang}" == "FI" ]]; then continue; fi # x9d+2019 FI overflow
-            if [[ "${target}" == "x9dp2019" && "${lang}" == "FR" ]]; then continue; fi # x9d+2019 FR overflow
-            if [[ "${target}" == "x9dp2019" && "${lang}" == "IT" ]]; then continue; fi # x9d+2019 IT overflow
+            # if [[ "${target}" == "x9dp2019" && "${lang}" == "FR" ]]; then continue; fi # x9d+2019 FR overflow
+            # if [[ "${target}" == "x9dp2019" && "${lang}" == "IT" ]]; then continue; fi # x9d+2019 IT overflow
             # if [[ "${target}" == "x9dp2019" && "${lang}" == "NL" ]]; then continue; fi # x9d+2019 NL overflow
-            if [[ "${target}" == "x9dp2019" && "${lang}" == "PT" ]]; then continue; fi # x9d+2019 PT overflow
-            if [[ "${target}" == "x9dp2019" && "${lang}" == "PL" ]]; then continue; fi # x9d+2019 PL overflow
-            if [[ "${target}" == "x9dp2019" && "${lang}" == "SE" ]]; then continue; fi # x9d+2019 SE overflow
+            # if [[ "${target}" == "x9dp2019" && "${lang}" == "PT" ]]; then continue; fi # x9d+2019 PT overflow
+            # if [[ "${target}" == "x9dp2019" && "${lang}" == "PL" ]]; then continue; fi # x9d+2019 PL overflow
+            # if [[ "${target}" == "x9dp2019" && "${lang}" == "SE" ]]; then continue; fi # x9d+2019 SE overflow
             SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS="-DTRANSLATIONS=${lang} " "${SRC_DIR}/tools/build-gh.sh"
             mv "${fw_name}" "${target}-${lang}-${GIT_SHA_SHORT}.bin"
         done
