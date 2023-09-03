@@ -19,7 +19,7 @@ TARGET_BLUETOOTH_ENABLED=("x7" "x7-access" "xlite" "x9lites" "x9dp2019"
 
 # Voice menu only: SK HU
 #LANGUAGES_ALL=(CN CZ DA DE EN ES FI FR IT JP PT SE TW PL NL)
-LANGUAGES_COLORLCD=(CN CZ DA DE EN ES FI FR IT JP PT SE TW PL NL)
+LANGUAGES_COLORLCD=(CN CZ DA DE EN ES FI FR HE IT JP NL PL PT SE TW)
 
 # CZ overflowed on x9d family build
 # CN, TW and JP don't display properly on B&W when last checked

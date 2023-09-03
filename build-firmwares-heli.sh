@@ -16,7 +16,7 @@ TARGET_NAMES_BW=("t8" "tlite" "tpro" "tx12" "tx12mk2"
 
 # Voice menu only: SK HU
 #LANGUAGES_ALL=(CN CZ DA DE EN ES FI FR IT JP PT SE TW PL NL)
-LANGUAGES_COLORLCD=(CN CZ DA DE EN ES FI FR IT JP PT SE TW PL NL)
+LANGUAGES_COLORLCD=(CN CZ DA DE EN ES FI FR HE IT JP NL PL PT SE TW)
 
 # CZ overflowed on x9d family build
 # CN, TW and JP don't display properly on B&W when last checked
