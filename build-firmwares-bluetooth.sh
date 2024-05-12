@@ -48,6 +48,7 @@ for target in $target_names; do
     if [[ ${TARGET_NAMES_BW[*]} =~ $re ]]; then
         for lang in "${LANGUAGES_BW[@]}"; do
             if [[ "${target}" =~ "x9dp2019" && "${lang}" == "CZ" ]]; then continue; fi # x9d+2019 CZ overflow
+            if [[ "${target}" =~ "zorro" && "${lang}" == "RU" ]]; then continue; fi # zorro RU overflow
             SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS="-DTRANSLATIONS=${lang} -DBLUETOOTH=Y " "${SRC_DIR}/tools/build-gh.sh"
             mv "${fw_name}" "${target}-${lang}-bluetooth-${GIT_SHA_SHORT}.bin"
         done
