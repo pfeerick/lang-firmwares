@@ -50,6 +50,7 @@ for target in $target_names; do
             if [[ "${target}" =~ "pocket" && "${lang}" == "RU" ]]; then continue; fi # STM32F407xE RU overflow
             if [[ "${target}" =~ "commando8" && "${lang}" == "RU" ]]; then continue; fi # STM32F407xE RU overflow
             if [[ "${target}" =~ "x9e" && "${lang}" == "RU" ]]; then continue; fi # STM32F407xE RU overflow
+            if [[ "${target}" =~ "xlites" && "${lang}" == "RU" ]]; then continue; fi # xlites RU overflow
             SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS="-DTRANSLATIONS=${lang} -DLUA_MIXER=Y " "${SRC_DIR}/tools/build-gh.sh"
             mv "${fw_name}" "${target}-${lang}-luamixer-${GIT_SHA_SHORT}.bin"
         done
