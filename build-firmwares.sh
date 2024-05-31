@@ -55,13 +55,11 @@ for target in $target_names; do
             # if [[ "${target}" == "x9dp2019" && "${lang}" == "PT" ]]; then continue; fi # x9d+2019 PT overflow
             # if [[ "${target}" == "x9dp2019" && "${lang}" == "PL" ]]; then continue; fi # x9d+2019 PL overflow
             # if [[ "${target}" == "x9dp2019" && "${lang}" == "SE" ]]; then continue; fi # x9d+2019 SE overflow
-            if [[ "${lang}" == "HE" ]]; then continue; fi # HE translation bug
             SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS="-DTRANSLATIONS=${lang} " "${SRC_DIR}/tools/build-gh.sh"
             mv "${fw_name}" "${target}-${lang}-${GIT_SHA_SHORT}.bin"
         done
     else # Color LCD
         for lang in "${LANGUAGES_COLORLCD[@]}"; do
-            if [[ "${lang}" == "HE" ]]; then continue; fi # HE translation bug
             SRCDIR=${SRC_DIR} FLAVOR=${target} EXTRA_OPTIONS="-DTRANSLATIONS=${lang} " "${SRC_DIR}/tools/build-gh.sh"
             mv "${fw_name}" "${target}-${lang}-${GIT_SHA_SHORT}.bin"
         done
