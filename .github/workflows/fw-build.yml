@@ -57,7 +57,7 @@ jobs:
         run: ./build-firmwares.sh
 
       - name: Package firmware ${{ matrix.target }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: edgetx-firmware-custom-${{ matrix.target }}
           path: |
