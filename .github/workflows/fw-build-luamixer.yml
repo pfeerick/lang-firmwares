@@ -42,7 +42,7 @@ jobs:
         - ${{ github.workspace }}:/src
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@4
         with:
           submodules: recursive
 
@@ -55,7 +55,7 @@ jobs:
       - name: Package firmware ${{ matrix.target }}
         uses: actions/upload-artifact@v3
         with:
-          name: edgetx-firmware-custom
+          name: edgetx-firmware-custom-${{ matrix.target }}
           path: |
             *.zip
           retention-days: 15
@@ -67,10 +67,11 @@ jobs:
     needs: build
     steps:
       - name: Download artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          name: edgetx-firmware-custom
+          pattern: edgetx-firmware-custom-*
           path: edgetx-firmware-custom
+          merge-multiple: true
 
       - name: Deploy release
         uses: softprops/action-gh-release@v1
