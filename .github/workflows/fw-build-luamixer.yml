@@ -42,7 +42,7 @@ jobs:
         - ${{ github.workspace }}:/src
     steps:
       - name: Check out the repo
-        uses: actions/checkout@4
+        uses: actions/checkout@v4
         with:
           submodules: recursive
 
