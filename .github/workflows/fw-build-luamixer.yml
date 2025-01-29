@@ -23,6 +23,7 @@ jobs:
       matrix:
         target:
           # - nv14;el18
+          - x9dp2019;x9d;x9dp
           - t12
           - t16
           - t18
