@@ -46,6 +46,7 @@ for target in $target_names; do
     if [[ ${TARGET_NAMES_BW[*]} =~ $re ]]; then
         for lang in "${LANGUAGES_BW[@]}"; do
             if [[ "${target}" =~ "x9dp2019" && "${lang}" == "CZ" ]]; then continue; fi # x9d+2019 CZ overflow
+            if [[ "${target}" =~ "x9dp2019" && "${lang}" == "RU" ]]; then continue; fi # x9d+2019 RU overflow
             if [[ "${target}" =~ "zorro" && "${lang}" == "RU" ]]; then continue; fi # STM32F407xE RU overflow
             if [[ "${target}" =~ "tx12mk2" && "${lang}" == "RU" ]]; then continue; fi # STM32F407xE RU overflow
             if [[ "${target}" =~ "pocket" && "${lang}" == "RU" ]]; then continue; fi # STM32F407xE RU overflow
